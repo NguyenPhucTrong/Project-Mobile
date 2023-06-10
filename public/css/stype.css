@@ -273,7 +273,8 @@ body {
 }
 
 .details .month {
-  margin-top: -45%;
+  position: static;
+  margin-top: -35%;
 }
 
 .cardHeader h2 {
