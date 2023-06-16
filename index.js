@@ -7,8 +7,10 @@ const port = 3000;
 
 app.use(morgan("combined"));
 
+app.use(express.static(path.join(__dirname, "public")));
+
 app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "Admin.html"));
+  res.sendFile(path.join(__dirname, "public/views/Admin.html"));
 });
 
 app.listen(port, () => {
