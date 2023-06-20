@@ -1,29 +1,21 @@
 {
-  "name": "project-mobile",
-  "version": "1.0.0",
-  "description": "Project Mobile",
-  "main": "index.js",
+  "name": "abc",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "nodemon --inspect index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon --inspect ./bin/www.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NguyenPhucTrong/Project-Mobile.git"
-  },
-  "author": "trọng, khoa, huỳnh",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/NguyenPhucTrong/Project-Mobile/issues"
-  },
-  "homepage": "https://github.com/NguyenPhucTrong/Project-Mobile#readme",
   "dependencies": {
-    "express": "^4.18.2",
-    "express-handlebars": "^7.0.7",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "morgan": "^1.10.0",
+    "express-session": "^1.17.3",
     "nodemon": "^2.0.22"
   }
 }
