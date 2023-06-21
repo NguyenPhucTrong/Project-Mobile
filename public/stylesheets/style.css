@@ -396,6 +396,24 @@ body {
   color: var(--white);
 }
 
+.product {
+  position: relative;
+  margin-left: 50px;
+  margin-right: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+}
+
+.product .card {
+  position: relative;
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
   .navigation-menu {
