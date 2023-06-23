@@ -216,8 +216,9 @@ body {
   width: 100%;
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 30px;
+  margin: 20px;
 }
 
 .cardBox-menu .card {
@@ -242,6 +243,24 @@ body {
 .cardBox-menu .card:hover .cardName,
 .cardBox-menu .card:hover .iconBx {
   color: var(--white);
+}
+
+.cardBox-menu .dropdown-toggle:hover {
+  background: var(--white);
+  color: var(--blue);
+}
+
+.cardBox-menu .bg-body-tertiary {
+  border-radius: 30px;
+  justify-content: space-between;
+}
+
+.cardBox-menu .dropdown-toggle {
+  background: var(--blue);
+  color: var(--bs-body-bg);
+  border-radius: 30px;
+  padding: 9px;
+  cursor: pointer;
 }
 
 /* ================== Order Details List ============== */
@@ -398,10 +417,11 @@ body {
 
 .product {
   position: relative;
+  margin-top: 25px;
   margin-left: 50px;
   margin-right: 50px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 30px;
 }
 
@@ -414,6 +434,7 @@ body {
   cursor: pointer;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 }
+
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
   .navigation-menu {
