@@ -4,11 +4,18 @@ var session = require("express-session");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-
+var mongoose = require("mongoose");
+var MongoStore = require("connect-mongo");
+var { param } = require("password-validator");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
 var app = express();
+
+mongoose
+  .connect("mongodb://0.0.0.0:27017/projectmobile")
+  .then(() => console.log("Database connected!"))
+  .catch((err) => console.log(err));
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
