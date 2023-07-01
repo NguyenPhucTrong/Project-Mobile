@@ -55,7 +55,7 @@ router.get("/products/edit-product/:id", (req, res, next) => {
   Product.findById(req.params.id)
     .then(function (product) {
       res.render("products/edit-product", {
-        id: req.params.id,
+        _id: product._id,
         imagePath: product.imagePath,
         description: product.description,
         title: product.title,
@@ -65,7 +65,7 @@ router.get("/products/edit-product/:id", (req, res, next) => {
     })
     .catch(function (err) {
       console.log(err);
-      res.redirect("/");
+      res.redirect("/products/product");
     });
 });
 
@@ -84,13 +84,12 @@ router.post("/products/edit-product/:id", (req, res, next) => {
     }
   )
     .then(function (product) {
-      res.redirect("/");
+      res.redirect("/products/product");
     })
     .catch(function (err) {
       console.log(err);
     });
 });
-
 //                                          User
 
 // router.post(
