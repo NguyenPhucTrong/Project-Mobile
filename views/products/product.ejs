@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
-
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
     <link
       rel="stylesheet"
       href="/font-awesome-4.7.0/css/font-awesome.min.css"
@@ -101,7 +101,10 @@
           <div class="search-menu">
             <label>
               <input type="text" placeholder="Search here" />
-              <ion-icon name="search-outline"></ion-icon>
+              <ion-icon
+                name="search-outline"
+                style="padding-top: 10.4px"
+              ></ion-icon>
             </label>
           </div>
 
@@ -113,68 +116,77 @@
         <!-- ======================= Cards ================== -->
         <div class="cardBox-menu">
           <div>
-            <h1 class="title">Thống kê</h1>
+            <h1 class="title">Sản phẩm</h1>
           </div>
+          <nav
+            class="navbar navbar-expand-lg bg-body-tertiary"
+            style="margin-left: 54%; margin-right: 30%"
+          >
+            <div class="container-fluid">
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Sản phẩm
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="/products/add-product"
+                          >Thêm sản phẩm</a
+                        >
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="/products/edit-product"
+                          >Sửa sản phẩm</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
         </div>
-
-        <!-- ================ Order Details List ================= -->
-        <div class="details-menu">
-          <div
-            style="min-height: 100px; max-height: 150px"
-            class="recentOrders-menu"
-          >
-            <div class="cardHeader-menu">
-              <h2>Tổng kết hằng năm</h2>
-              <a href="#" class="btn">View All</a>
-            </div>
-            <table>
-              <tbody>
-                <tr>
-                  <td>Tổng doanh thu:</td>
-                  <td>Tổng hoá đơn:</td>
-                </tr>
-
-                <tr>
-                  <td>Phản hồi khách hàng:</td>
-                  <td>Lượt đánh giá:</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!-- ================= New Customers ================ -->
-          <div class="recentCustomers-menu">
-            <div class="cardHeader">
-              <h2>Khách hàng gần đây</h2>
+        <div class="product">
+          <%products.forEach(function (item) { %>
+          <div class="card" style="width: 18rem">
+            <img src="<%= item.imagePath %>" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title"><%= item.title%></h5>
+              <p class="card-text"><%= item.description %></p>
+              <p><%= item.price %></p>
+              <a
+                href="/products/edit-product/<%= item._id %>"
+                class="btn btn-danger pull-right"
+                role="button"
+                >Edit</a
+              >
             </div>
           </div>
-          <div
-            class="recentOrders-menu month"
-            style="min-height: 100px; max-height: 150px; display: plex"
-          >
-            <div class="cardHeader-menu">
-              <h2>Tổng kết hằng tháng</h2>
-              <a href="#" class="btn">View All</a>
-            </div>
-            <table>
-              <tbody>
-                <tr>
-                  <td>Tổng doanh thu:</td>
-                  <td>Tổng hoá đơn:</td>
-                </tr>
-
-                <tr>
-                  <td>Phản hồi khách hàng:</td>
-                  <td>Lượt đánh giá:</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <% });%>
         </div>
       </div>
     </div>
 
     <!-- =========== Scripts =========  -->
-    <script src="javascripts/main.js"></script>
+    <script src="/javascripts/main.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"

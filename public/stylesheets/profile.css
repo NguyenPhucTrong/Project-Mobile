@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-profile {
+  width: 300px;
+  height: auto;
+  margin-top: -45%;
+}
+
+.btn {
+  margin-top: 20px;
+}
