@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/profile.css" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
     <link
@@ -12,7 +13,6 @@
     />
     <title><%= title %></title>
   </head>
-
   <body>
     <!-- =============== Navigation ================ -->
     <div class="container-menu">
@@ -37,7 +37,7 @@
           </li>
 
           <li>
-            <a href="/homepage/product">
+            <a href="/products/product">
               <span class="icon">
                 <ion-icon name="cash-outline"></ion-icon>
               </span>
@@ -46,11 +46,11 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="/user/profile/<%= _id %>">
               <span class="icon">
-                <ion-icon name="chatbubble-outline"></ion-icon>
+                <ion-icon name="person-outline"></ion-icon>
               </span>
-              <span class="title">Messages</span>
+              <span class="title">Profile</span>
             </a>
           </li>
 
@@ -113,7 +113,6 @@
             <img src="/images/1.jpg" alt="images" />
           </div>
         </div>
-
         <!-- ======================= Cards ================== -->
         <div class="cardBox-menu">
           <div>
@@ -148,14 +147,14 @@
                       Sản phẩm
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
                       <li>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="/products/add-product"
+                          >Thêm sản phẩm</a
+                        >
                       </li>
-                      <li><hr class="dropdown-divider" /></li>
                       <li>
-                        <a class="dropdown-item" href="#"
-                          >Something else here</a
+                        <a class="dropdown-item" href="/products/edit-product"
+                          >Sửa sản phẩm</a
                         >
                       </li>
                     </ul>
@@ -165,18 +164,77 @@
             </div>
           </nav>
         </div>
-        <div class="product">
-          <%products.forEach(function (item) { %>
-          <div class="card" style="width: 18rem">
-            <img src="<%= item.imagePath %>" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title"><%= item.title%></h5>
-              <p class="card-text"><%= item.description %></p>
-              <p><%= item.price %></p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+
+        <!-- ================ Order Details List ================= -->
+        <div class="form" style="margin-top: 12%">
+          <form
+            action="/products/add-product"
+            method="post"
+            class="form-profile"
+          >
+            <div class="form-group">
+              <label for="imagePath">Image Path </label>
+              <input
+                type="text"
+                name="imagePath"
+                placeholder="Image Path"
+                style="margin-top: 15px; margin-bottom: 15px"
+                class="form-control"
+                required
+              />
             </div>
-          </div>
-          <% });%>
+
+            <div class="form-group">
+              <label for="title">Title </label>
+              <br />
+
+              <input
+                type="text"
+                name="title"
+                placeholder="Title"
+                style="margin-top: 15px; margin-bottom: 15px"
+                required
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="title">Quantity</label>
+              <br />
+
+              <input
+                type="text"
+                class="form-control"
+                name="quantity"
+                placeholder="Quantity"
+                style="margin-top: 15px; margin-bottom: 15px"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label rows="4" cols="50" for="description">Description </label>
+              <textarea
+                name="description"
+                placeholder="Description"
+                class="form-control"
+                style="margin-top: 15px; margin-bottom: 15px"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="price">Price </label>
+              <br />
+              <input
+                type="number"
+                name="price"
+                placeholder="Price"
+                style="margin-top: 15px"
+                required
+                class="form-control"
+              />
+            </div>
+
+            <button type="submit" class="btn btn-danger">Add Product</button>
+          </form>
         </div>
       </div>
     </div>
