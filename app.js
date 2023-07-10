@@ -4,6 +4,7 @@ var session = require("express-session");
 var flash = require("connect-flash");
 var path = require("path");
 var cookieParser = require("cookie-parser");
+var bodyParser = require("body-parser");
 var logger = require("morgan");
 var passport = require("passport");
 var bcrypt = require("bcrypt");
@@ -13,7 +14,7 @@ var multer = require("multer");
 var MongoStore = require("connect-mongo");
 var { param } = require("password-validator");
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+var usersRouter = require("./routes/user");
 
 var app = express();
 
@@ -57,7 +58,7 @@ app.use(function (req, res, next) {
 });
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/user", usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -17,31 +17,3 @@ toggle.onclick = function () {
   navigation.classList.toggle("active");
   main.classList.toggle("active");
 };
-
-$(document).ready(function () {
-  $(".delete-product").on("click", function (e) {
-    $target = $(e.target);
-    const id = $target.attr("data-id");
-    $.ajax({
-      type: "GET",
-      url: "/product/delete-product/" + id,
-      success: function (response) {
-        console.log(response);
-        $.ajax({
-          type: "DELETE",
-          url: "/product/delete-product/" + id + "?_csrf=" + response.csrfToken,
-          success: function (response) {
-            alert(response.messsage);
-            window.location.href = "/";
-          },
-          error: function (err) {
-            console.log(err);
-          },
-        });
-      },
-      error: function (err) {
-        console.log(err);
-      },
-    });
-  });
-});

@@ -11,7 +11,7 @@
       rel="stylesheet"
       href="/font-awesome-4.7.0/css/font-awesome.min.css"
     />
-    <title><%= title %></title>
+    <title>Profile</title>
   </head>
   <body>
     <!-- =============== Navigation ================ -->
@@ -46,7 +46,7 @@
           </li>
 
           <li>
-            <a href="/user/profile">
+            <a href="/user/profile/<%= _id %>">
               <span class="icon">
                 <ion-icon name="person-outline"></ion-icon>
               </span>
@@ -117,41 +117,72 @@
         <!-- ======================= Cards ================== -->
         <div class="cardBox-menu">
           <div>
-            <h1 class="title"><%= title %></h1>
+            <h1 class="title">Profile</h1>
           </div>
         </div>
 
         <!-- ================ Order Details List ================= -->
-        <div class="form">
-          <form action="#" method="post" class="form-profile">
-            <div class="form-group">
+        <div class="form" style="margin-top: -15%">
+          <form action="/user/profile/<%= _id %>" method="post">
+            <div
+              class="form-group"
+              style="margin-top: 15px; margin-bottom: 15px"
+            >
               <label for="title">Email</label>
-              <input type="text" class="form-control" name="email" required />
+              <input
+                type="text"
+                class="form-control"
+                name="email"
+                value="<%= email %>"
+                required
+              />
             </div>
-            <div class="form-group">
+            <div
+              class="form-group"
+              style="margin-top: 15px; margin-bottom: 15px"
+            >
               <label for="title">First Name</label>
               <input
                 type="text"
                 class="form-control"
                 name="firstname"
+                value="<%= firstname %>"
                 required
               />
             </div>
-            <div class="form-group">
+            <div
+              class="form-group"
+              style="margin-top: 15px; margin-bottom: 15px"
+            >
               <label for="title">Last name</label>
               <input
                 type="text"
                 class="form-control"
                 name="lastname"
+                value="<%= lastname %>"
                 required
               />
             </div>
-            <div class="form-group">
+            <div
+              class="form-group"
+              style="margin-top: 15px; margin-bottom: 15px"
+            >
               <label for="title">Age</label>
-              <input type="text" class="form-control" name="age" required />
+              <input
+                type="text"
+                class="form-control"
+                name="age"
+                value="<%= age %>"
+                required
+              />
             </div>
-            <input type="hidden" class="signup-id" />
-            <button type="submit" class="btn btn-danger">Edit User</button>
+            <button
+              type="submit"
+              class="btn btn-danger"
+              style="margin-top: 15px; margin-bottom: 15px"
+            >
+              Edit User
+            </button>
           </form>
         </div>
       </div>

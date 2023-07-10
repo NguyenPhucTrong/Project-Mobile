@@ -44,7 +44,7 @@
               <span class="title">Product</span>
             </a>
           </li>
-
+          <% if (id == null) { %>
           <li>
             <a href="/user/profile">
               <span class="icon">
@@ -53,7 +53,16 @@
               <span class="title">Profile</span>
             </a>
           </li>
-
+          <% } else { %>
+          <li>
+            <a href="/user/profile/<%= id %>">
+              <span class="icon">
+                <ion-icon name="person-outline"></ion-icon>
+              </span>
+              <span class="title">Profile</span>
+            </a>
+          </li>
+          <% } %>
           <li>
             <a href="#">
               <span class="icon">
@@ -166,7 +175,7 @@
         </div>
 
         <!-- ================ Order Details List ================= -->
-        <div class="form">
+        <div class="form" style="margin-top: -10%">
           <form action="/products/edit-product/<%= _id %>" method="post">
             <div class="form-group">
               <label for="imagePath">Image Path </label>

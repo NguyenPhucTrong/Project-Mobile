@@ -1,5 +1,5 @@
 var passport = require("passport");
-var UserAdmin = require("../models/userAdmin");
+var userADSchema = require("../models/userAdmin");
 var LocalStrategy = require("passport-local").Strategy;
 
 passport.serializeUser(function (user, done) {
@@ -7,7 +7,8 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (id, done) {
-  UserAdmin.findById(id)
+  userADSchema
+    .findById(id)
     .then(function (user) {
       done(null, user);
     })
@@ -25,7 +26,8 @@ passport.use(
       passReqToCallback: true,
     },
     function (req, email, password, done) {
-      UserAdmin.findOne({ email: email })
+      userADSchema
+        .findOne({ email: email })
         .then(function (user) {
           if (user) {
             return done(
@@ -34,8 +36,8 @@ passport.use(
               req.flash("error", "Email is already in use.")
             );
           }
-          var newUser = new UserAdmin();
-          console.log(UserAdmin);
+          var newUser = new userADSchema();
+          console.log(userADSchema);
           newUser.email = email;
           newUser.password = newUser.encryptPassword(password);
           newUser
@@ -66,7 +68,8 @@ passport.use(
     },
     function (req, email, password, done) {
       console.log("signin");
-      UserAdmin.findOne({ email: email })
+      userADSchema
+        .findOne({ email: email })
         .then(function (user) {
           if (!user) {
             return done(null, false, req.flash("error", "No user found."));

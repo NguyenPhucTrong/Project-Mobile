@@ -22,4 +22,4 @@ userADSchema.methods.validPassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 
-module.exports = mongoose.model("UserAdmin", userADSchema);
+module.exports = mongoose.model("userADSchema", userADSchema);
