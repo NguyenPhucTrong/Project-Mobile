@@ -15,6 +15,7 @@ var MongoStore = require("connect-mongo");
 var { param } = require("password-validator");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/user");
+var Product = require("./models/productModel");
 
 var app = express();
 
@@ -45,6 +46,20 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, "public")));
+
+app.post("/getsearch", async (req, res) => {
+  let payload = req.body.payload.trim();
+  console.log(payload);
+  let search = await Product.find({
+    $or: [
+      { title: { $regex: new RegExp("^" + payload + ".*", "i") } },
+      { description: { $regex: new RegExp("^" + payload + ".*", "i") } },
+    ],
+  }).exec();
+
+  search = search.slice(0, 10);
+  res.send({ payload: search });
+});
 
 app.use(function (req, res, next) {
   res.locals.login = req.isAuthenticated();

@@ -51,7 +51,7 @@ router.get("/profile/:id?", isLoggedIn, (req, res, next) => {
   if (typeof req.params.id === "undefined") {
     res
       .render("user/profile", {
-        _id: user._id,
+        id: user.id,
         email: null,
         firstname: null,
         lastname: null,
@@ -67,7 +67,7 @@ router.get("/profile/:id?", isLoggedIn, (req, res, next) => {
       .findById(req.params.id)
       .then(function (user) {
         res.render("user/profile", {
-          _id: user._id,
+          _id: user.id,
           email: user.email,
           firstname: user.firstname,
           lastname: user.lastname,
@@ -122,12 +122,12 @@ router.post("/profile/:id", (req, res, next) => {
 //   });
 
 router.get("/staff", isLoggedIn, function (req, res, next) {
-  res.render("user/staff", { title: "staff" });
+  res.render("user/staff", { title: "staff", id: req.user.id });
   // _id: req.user.id
 });
 
 router.post("/staff", function (req, res, next) {
-  res.redirect("/user/staff");
+  res.redirect("/user/staff", { id: req.user.id });
 });
 
 module.exports = router;

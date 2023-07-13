@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+    <link rel="stylesheet" href="/stylesheets/search.css" />
     <link
       rel="stylesheet"
       href="/font-awesome-4.7.0/css/font-awesome.min.css"
@@ -111,7 +112,13 @@
 
           <div class="search-menu">
             <label>
-              <input type="text" placeholder="Search here" />
+              <input
+                type="text"
+                placeholder="Search here"
+                id="search-box"
+                onkeyup="sendData(this)"
+              />
+              <div id="searchResult" class="search-result"></div>
               <ion-icon
                 name="search-outline"
                 style="padding-top: 10.4px"
@@ -164,8 +171,10 @@
                         >
                       </li>
                       <li>
-                        <a class="dropdown-item" href="/products/edit-product"
-                          >Sửa sản phẩm</a
+                        <a
+                          class="dropdown-item delete-all-products-link"
+                          href="/products/delete-all"
+                          >Xoá sản phẩm</a
                         >
                       </li>
                     </ul>
@@ -175,12 +184,12 @@
             </div>
           </nav>
         </div>
-        <div class="product">
-          <%products.forEach(function (item) { %>
+        <div class="product" id="productList">
+          <% products.forEach(function (item) { %>
           <div class="card" style="width: 18rem">
-            <img src="<%= item.imagePath %>" class="card-img-top" alt="..." />
+            <img src="/imag/<%= item.imagePath %>" alt="images" />
             <div class="card-body">
-              <h5 class="card-title"><%= item.title%></h5>
+              <h5 class="card-title"><%= item.title %></h5>
               <p><%= item.quantity %></p>
               <p class="card-text"><%= item.description %></p>
               <p><%= item.price %></p>
@@ -193,12 +202,13 @@
               <button
                 style="margin-right: 5px"
                 class="btn btn-danger pull-primary pull-right delete-product"
+                data-id="<%= item._id %>"
               >
                 <ion-icon name="trash-outline"></ion-icon>
               </button>
             </div>
           </div>
-          <% });%>
+          <% }); %>
         </div>
       </div>
     </div>
@@ -207,6 +217,8 @@
     <script src="/javascripts/jquery-1.12.4.min.js"></script>
     <script src="/javascripts/main.js"></script>
     <script src="/javascripts/delete.js"></script>
+    <script src="/javascripts/deleteAll.js"></script>
+    <script src="/javascripts/search.js"></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"

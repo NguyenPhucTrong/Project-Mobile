@@ -7,6 +7,7 @@ mongoose
   .catch((err) => console.log(err));
 
 const Product = new Schema({
+  _id: { type: Schema.Types.ObjectId, unique: true },
   isDisplay: { type: Boolean, default: false },
   imagePath: { type: String, required: true },
   title: { type: String, required: true },
